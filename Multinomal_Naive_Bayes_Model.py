@@ -22,7 +22,6 @@ def get_feature_counts(train_x, train_y):
     pos_vector= np.zeros((words))  
     neg_vector=np.zeros((words))
     neut_vector=np.zeros((words))
-    
     for i in range(0,words):
       cnt_pst=0
       cnt_neg=0
@@ -110,7 +109,8 @@ def finalprobability(test_x,test_y):
       vector[0]= finalpp
       vector[1]= finalpn
       vector[2]=finalpnu
-      finalvalue = np.argmax(vector) #Argmax returns  the index of the greatest vector 
+      #Argmax returns  the index of the greatest vector 
+      finalvalue = np.argmax(vector) 
       if test_y[i] == 'positive' and finalvalue == 0:
           #score keeps increasing when the predicted result is the same as the test label
           score+=1 

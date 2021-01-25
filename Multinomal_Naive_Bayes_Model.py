@@ -112,7 +112,8 @@ def finalprobability(test_x,test_y):
       vector[2]=finalpnu
       finalvalue = np.argmax(vector) #Argmax returns  the index of the greatest vector 
       if test_y[i] == 'positive' and finalvalue == 0:
-          score+=1 #score keeps increasing when the predicted result is the same as the test label
+          #score keeps increasing when the predicted result is the same as the test label
+          score+=1 
           print('p: '+str(score))
       if test_y[i] == 'negative' and finalvalue == 1:
           score+=1
@@ -120,8 +121,6 @@ def finalprobability(test_x,test_y):
       if test_y[i] == 'neutral' and finalvalue == 2:
           score+=1
           print( 'nu: '+ str(score))
-
-        
     return score/len(test_y)
 x= finalprobability(test_x,test_y)
 print(x)

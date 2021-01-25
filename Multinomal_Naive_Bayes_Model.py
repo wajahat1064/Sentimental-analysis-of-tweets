@@ -14,10 +14,12 @@ train_y = np.array(train_y.iloc[:,:].as_matrix()) #train labels
 test_x = np.array(test_x.iloc[:,:].as_matrix())   #test features
 test_y = np.array(test_y.iloc[:,:].as_matrix())   #test labels
 
-def get_feature_counts(train_x, train_y): #this function gets the count of the all the features
+#this function gets the count of the all the features
+def get_feature_counts(train_x, train_y): 
     words= train_x.shape[1]
     tweets=train_x.shape[0]
-    pos_vector= np.zeros((words)) #generating a null array to be filled later 
+    #generating a null array to be filled later
+    pos_vector= np.zeros((words))  
     neg_vector=np.zeros((words))
     neut_vector=np.zeros((words))
     
@@ -27,18 +29,13 @@ def get_feature_counts(train_x, train_y): #this function gets the count of the a
       cnt_neut=0
       for j in range(0,tweets):  
           number = train_x[j,i]
-         # print(number)
-
           if train_y[j] == 'positive':
             pos_vector[i] = pos_vector[i] + number
           if train_y[j] == 'negative':
             neg_vector[i] = neg_vector[i]+ number
           if train_y[j] == 'neutral':
-            neut_vector[i]= neut_vector[i]+ number
-
-            
+            neut_vector[i]= neut_vector[i]+ number      
     return pos_vector, neg_vector, neut_vector
-
 pos_vector, neg_vector, neut_vector = get_feature_counts(train_x,train_y)
 
 #This function calculates the probability of likelihood function
@@ -50,6 +47,7 @@ def probabilityoflikelihood(pos_vector,neg_vector, neut_vector):
 
 problp,probln,problnu = probabilityoflikelihood(pos_vector,neg_vector, neut_vector)
 print(problp,probln,problnu)
+
 #This function calculates and returns the probability of the prior function
 def probabilityofprior(train_y):
   count_positive=0

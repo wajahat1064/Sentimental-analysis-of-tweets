@@ -3,11 +3,13 @@ import numpy as np
 import time
 import sys
 import math
+
 #importing the dataset as a numpy dataframe
 test_x = pd.read_csv('question-4-test-features.csv')
 test_y = pd.read_csv('question-4-test-labels.csv')
 train_x = pd.read_csv('question-4-train-features.csv')
 train_y = pd.read_csv('question-4-train-labels.csv')
+
 # Numpy dataframe is converted to a numpy array so that the features can be assessed
 train_x = np.array(train_x.iloc[:,:].as_matrix()) #train features
 train_y = np.array(train_y.iloc[:,:].as_matrix()) #train labels
@@ -15,8 +17,8 @@ test_x = np.array(test_x.iloc[:,:].as_matrix())   #test features
 test_y = np.array(test_y.iloc[:,:].as_matrix())   #test labels
 train_x[train_x>0] =1 #All the values greater than 1 will be changed to 1 according to the Bernoulli MODEL
 test_x[test_x>0]=1
-
-def get_feature_counts(train_x, train_y): #this function gets the count of the all the features
+#This function gets the count of the all the features
+def get_feature_counts(train_x, train_y): 
     words= train_x.shape[1]
     tweets=train_x.shape[0]
     pos_vector= np.zeros((words)) #generating a null array to be filled later 

@@ -21,25 +21,22 @@ test_x[test_x>0]=1
 def get_feature_counts(train_x, train_y): 
     words= train_x.shape[1]
     tweets=train_x.shape[0]
-    pos_vector= np.zeros((words)) #generating a null array to be filled later 
+    #generating a null array to be filled later
+    pos_vector= np.zeros((words))  
     neg_vector=np.zeros((words))
     neut_vector=np.zeros((words))
-    
     for i in range(0,words):
       cnt_pst=0
       cnt_neg=0
       cnt_neut=0
       for j in range(0,tweets):  
           number = train_x[j,i]
-         # print(number)
-
           if train_y[j] == 'positive':
             pos_vector[i] = pos_vector[i] + number
           if train_y[j] == 'negative':
             neg_vector[i] = neg_vector[i]+ number
           if train_y[j] == 'neutral':
             neut_vector[i]= neut_vector[i]+ number
-
             
     return pos_vector, neg_vector, neut_vector
 

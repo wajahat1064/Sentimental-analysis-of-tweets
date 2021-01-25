@@ -51,6 +51,7 @@ def probabilityoflikelihood(pos_vector,neg_vector, neut_vector):
 
 problp,probln,problnu = probabilityoflikelihood(pos_vector,neg_vector, neut_vector)
 print(problp,probln,problnu)
+
 #This function calculates and returns the probability of the prior function
 def probabilityofprior(train_y):
   count_positive=0
@@ -121,16 +122,15 @@ def bernoullifinalprobability(test_x,test_y):
       vector[2]=finalpnu
       finalvalue = np.argmax(vector)
       if test_y[i] == 'positive' and finalvalue == 0:
-          score+=1 #score keeps increasing when the predicted result is the same as the test label
+          #score keeps increasing when the predicted result is the same as the test label
+          score+=1 
           print('pos: '+str(score))
       if test_y[i] == 'negative' and finalvalue == 1:
           score+=1
           print('neg: '+str(score))
       if test_y[i] == 'neutral' and finalvalue == 2:
           score+=1
-          print( 'neu: '+ str(score))
-      
-        
+          print( 'neu: '+ str(score))        
     return int(score/len(test_y))
 y= bernoullifinalprobability(test_x,test_y)
 print(y)
